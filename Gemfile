@@ -12,6 +12,7 @@ group :development, :test do
 end
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'pry'
   gem 'spring'
 end
 gem 'activeadmin', :github=>"gregbell/active_admin"
@@ -24,6 +25,7 @@ gem 'sendgrid'
 gem 'simple_form'
 gem 'upmin-admin'
 group :development do
+  gem "letter_opener"
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'

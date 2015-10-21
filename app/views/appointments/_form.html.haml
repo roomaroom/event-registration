@@ -1,0 +1,12 @@
+= simple_form_for(@appointment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.hidden_field :user_id,  value: "#{current_user.id}"
+    = f.association :event, selected: "#{params[:event_id]}"
+    = f.input :notice
+    = f.input :payment
+    = f.input :paid
+
+  .form-actions
+    = f.button :submit
