@@ -43,5 +43,9 @@ module School
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # config.gem "ukrainian", :lib => "ukrainian",
+    # :source => "http://gemcutter.org", :version => ">= 0.2.1"
+
+    config.i18n.default_locale = :uk
   end
 end
