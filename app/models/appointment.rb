@@ -12,7 +12,7 @@ class Appointment < ActiveRecord::Base
     )
   end
 
-  # def self.search_with_elasticsearch(*args)
-  #   __elasticsearch__.search(*args)
-  # end
+  def self.search_with_elasticsearch(*args)
+    __elasticsearch__.search(*args)
+  end
 end

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+ruby '2.2.1'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -28,6 +28,13 @@ gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
 gem 'upmin-admin'
+gem 'carrierwave'
+gem "mini_magick"
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'andand'
+gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails', git: 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+
 group :development do
   gem "letter_opener"
   gem 'better_errors'

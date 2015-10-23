@@ -11,3 +11,6 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
+        = form_tag('/appointments/search', method: 'get', remote: true) do
+          .nav-search-holder
+            = search_field_tag 'q', params[:q], placeholder: 'Search...', required: true, class: 'form-control'
