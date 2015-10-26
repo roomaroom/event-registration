@@ -20,7 +20,7 @@ group :development do
   gem 'spring'
 end
 gem 'activeadmin', :github=>"gregbell/active_admin"
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'devise'
 gem 'devise_invitable'
 gem 'haml-rails'

@@ -1,33 +1,27 @@
-%h1 Listing events
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Start time
-      %th End time
-      %th Description
-      %th Address
-      %th Photo
-      %th
-      %th
-      %th
-      %th
-
-  %tbody
-    - @events.each do |event|
-      %tr
-        %td= event.title
-        %td= event.start_time
-        %td= event.end_time
-        %td= event.description
-        %td= event.address
-        %td= event.photo
-        %td= link_to 'Зареєструватися', new_appointment_path( :event_id => event.id)
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Event', new_event_path
+%h1 Найближчі школи
+.container
+  .row
+    .col-xs-12.col-sm-12
+      %ul.event-list
+        - @events.each do |event|
+          %li
+            %time{:datetime => "2014-07-20"}
+              %span.day 4
+              %span.month Jul
+              %span.year 2014
+              %span.time ALL DAY
+            %img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
+            .info
+              %h2.title= event.title
+              %p.desc= event.description
+              %ul
+                %li{:style => "width:50%;"}
+                  = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
+                %li{:style => "width:50%;"}
+                  = link_to 'Карта', edit_event_path(event)
+            / .social
+            /   %ul
+            /     %li.facebook{:style => "width:33%;"}
+            /       %a{:href => "#facebook"}
+            /         %span.fa.fa-gears
+     

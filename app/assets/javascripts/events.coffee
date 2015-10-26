@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  geocompleteMap =->
+    $("#gmaps-input-address").geocomplete
+      # map: "#company-address"
+      # location: $("#gmaps-input-address").val()
+      # markerOptions: {
+      #   draggable: true
+      # },
+      details: ".details"
+      detailsAttribute: "data-geo"
+  geocompleteMap()
