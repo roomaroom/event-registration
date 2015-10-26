@@ -1,16 +1,21 @@
 -# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-default.navbar-fixed-top
+%nav.navbar.navbar-inverse.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
+      = link_to 'Школа Марії', authenticated_root_path, class: 'navbar-brand'
+    #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
-        = form_tag('/appointments/search', method: 'get', remote: true, class: 'form-search') do
-          .nav-search-holder
-            = search_field_tag 'q', params[:q], placeholder: 'Search...', required: true, class: 'form-control'
+        / = form_tag('/appointments/search', method: 'get', remote: true, class: 'form-search') do
+        /   .nav-search-holder
+        /     = search_field_tag 'q', params[:q], placeholder: 'Search...', required: true, class: 'form-control'
+
+        / = form_tag('/appointments/search', method: 'get', remote: true) do
+        /   .nav-search-holder
+        /     = search_field_tag 'q', params[:q], placeholder: 'Search...', required: true, class: 'form-control'
+
