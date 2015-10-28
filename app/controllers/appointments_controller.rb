@@ -1,11 +1,10 @@
 class AppointmentsController < ApplicationController
   # before_action :load_event, :only => :new
 
-  # def load_event
-  #   @event = Event.find(params[:event_id])
-  # end
+
 
   def new
+    load_event
     build_appointment
   end
 
@@ -47,8 +46,11 @@ class AppointmentsController < ApplicationController
     end
 
     def load_appointment
-      #binding.pry
       @appointment ||= Appointment.find(params[:id])
+    end
+
+    def load_event
+      @event = Event.find(params[:event_id])
     end
 
     def build_appointment
@@ -57,9 +59,8 @@ class AppointmentsController < ApplicationController
     end
 
     def save_appointment
-      #espond_to do |format|
       if @appointment.save
-        redirect_to :back
+        redirect_to events_path, notice: "Ви успішно зареєстровані"
       else
         redirect_to :back
       end

@@ -5,7 +5,7 @@
     = f.hidden_field :user_id,  value: "#{current_user.id}"
     .hidden= f.association :event, selected: "#{params[:event_id]}"
     = f.input :notice, label: 'Примітки'
-    = f.input :payment, label: 'Форма оплати'
+    = f.input :payment , as: :select, collection: Appointment.payments.keys , label: 'Форма оплати', include_blank: false
 
   .form-actions
     = f.submit 'Зареєструватися', class: 'btn btn-primary'

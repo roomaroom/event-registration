@@ -5,6 +5,8 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
 
+  enum payment: { 'Повна вартість 100грн'=> 100, 'Для студентів 70грн'=> 70, 'Без Харчування 40грн'=> 40, 'Не маю можливості заплатити'=> 0 }
+
   def as_indexed_json(options={})
     as_json(
       only: [:id, :notice],
