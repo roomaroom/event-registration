@@ -46,6 +46,6 @@ module School
     # config.gem "ukrainian", :lib => "ukrainian",
     # :source => "http://gemcutter.org", :version => ">= 0.2.1"
 
-    #config.i18n.default_locale = :uk
+    config.i18n.default_locale = :uk
   end
 end

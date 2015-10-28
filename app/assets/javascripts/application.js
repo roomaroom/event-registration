@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery.geocomplete.min
+//= require lightbox
 //= require_tree .

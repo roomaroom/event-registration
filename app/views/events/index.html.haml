@@ -6,19 +6,32 @@
         - @events.each do |event|
           %li
             %time{:datetime => "2014-07-20"}
-              %span.day 4
-              %span.month Jul
+              .start-date Початок
+              /%span.day 4
+              %span.month= l(event.start_time, format: '%I:%M %d %b')
               %span.year 2014
               %span.time ALL DAY
-            %img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
+              %span.day -
+              .start-date Закінчення
+              /%span.day 4
+              %span.month= l(event.end_time, format: '%I:%M %d %b')
+              
+            /%img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
+            /= image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
+            = link_to  event.photo.url, "data-lightbox" => "roadtrip" do
+              = image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
             .info
               %h2.title= event.title
               %p.desc= event.description
+              %p.address
+                = fa_icon "map-marker"
+                = event.address
               %ul
-                %li{:style => "width:50%;"}
-                  = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
-                %li{:style => "width:50%;"}
+                %li.map{:style => "width:50%;"}
                   = link_to 'Карта', edit_event_path(event)
+                %li.register{:style => "width:50%;"}
+                  = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
+
             / .social
             /   %ul
             /     %li.facebook{:style => "width:33%;"}

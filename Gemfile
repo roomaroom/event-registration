@@ -7,9 +7,11 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-#gem "ukrainian"
+gem "ukrainian", git: 'git@github.com:romanvbabenko/ukrainian.git'
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'lightbox2-rails'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'byebug'
