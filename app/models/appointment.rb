@@ -12,6 +12,24 @@ class Appointment < ActiveRecord::Base
     )
   end
 
+  def self.search(query)
+  __elasticsearch__.search(
+    {
+      query: {
+        query_string: {
+          query: "*#{query}"
+        }
+      }
+    }
+  )
+end
+
+  # settings index: { number_of_shards: 1 } do
+  #   mappings dynamic: 'false' do
+  #     indexes :notice, analyzer: 'english'
+  #   end
+  # end
+
   def self.search_with_elasticsearch(*args)
     __elasticsearch__.search(*args)
   end
