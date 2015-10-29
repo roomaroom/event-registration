@@ -1,6 +1,19 @@
-%h1 Listing appointments
+%h1 Записи
+.container
+  .row
+    .col-xs-9.col-sm-9.col-xs-offse1t-2
+      = form_tag('/appointments/search', method: 'get', remote: true, class: 'form-search') do
+        .col-xs-3
+          /= select_tag(:event_id, options_for_select(Event.all.collect {|u| [u.title, u.id]}), class: 'form-control')
+        .nav-search-holder.col-xs-7.search-wrapper
+          = search_field_tag 'q', params[:q], placeholder: 'Пошук...', required: true, class: 'form-control'
+        .form-group1.col-xs-1.search-button
+          %button.btn.btn-primary
+            %span.glyphicon.glyphicon-search
+/%br
+%hr
 .appointments-js
   = render 'appointments'
 %br
 
-= link_to 'New Appointment', new_appointment_path
+= link_to 'Всі записи', appointments_path

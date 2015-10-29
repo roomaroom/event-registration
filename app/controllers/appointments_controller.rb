@@ -1,15 +1,17 @@
 class AppointmentsController < ApplicationController
   # before_action :load_event, :only => :new
 
-
-
   def new
     load_event
     build_appointment
   end
 
   def index
-    @appointments = Appointment.all
+    @appointments = if params[:event_id].present?
+      load_event.appointments
+    else
+      Appointment.all
+    end
   end
 
   def edit
@@ -19,7 +21,11 @@ class AppointmentsController < ApplicationController
   def update
     load_appointment
     build_appointment
-    save_appointment
+    if @appointment.save
+      redirect_to appointments_path, notice: "Оновлено"
+    else
+      redirect_to :back
+    end
   end
 
   def create
@@ -30,6 +36,7 @@ class AppointmentsController < ApplicationController
   def search
     if params[:q].present?
       @appointments = Appointment.search(params[:q]).records.page(params[:page]).per(20)
+      #@appointments = @appointments.where(event_id: params[:event_id])
     end
     respond_to do |format|
       format.html

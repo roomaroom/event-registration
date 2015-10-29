@@ -1,11 +1,12 @@
-%table
+%table.table
   %thead
     %tr
-      %th User
-      %th Event
-      %th Notice
-      %th Payment
-      %th Paid
+      %th Ім'я
+      %th Телефон
+      %th Нотатка
+      %th Сума
+      %th Title
+      %th Зберегти
       %th
       %th
       %th
@@ -14,17 +15,27 @@
     - @appointments.each do |appointment|
 
       %tr
-        %td
-          = simple_form_for(appointment) do |f|
-            = f.error_notification
+        = simple_form_for(appointment) do |f|
+          = f.error_notification
+          / %td
+
+          /   .form-inputs
+          /     = f.input :notice
+          /   .form-actions
+          /     = f.button :submit
+          %td= appointment.user.name
+          %td= appointment.user.mobile
+          %td
             .form-inputs
-              = f.input :notice
+              = f.input :notice, label: false
+          %td
+            .form-inputs
+              = f.input :payment, label: false
+          %td= appointment.event.title
+          %td
             .form-actions
-              = f.button :submit
-        %td= appointment.event
-        %td= appointment.notice
-        %td= appointment.payment
-        %td= appointment.paid
-      /   %td= link_to 'Show', appointment
-      /   %td= link_to 'Edit', edit_appointment_path(appointment)
-      /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              /= f.button :submit
+              = f.submit 'Зберегти', class: 'btn btn-primary'
+        /   %td= link_to 'Show', appointment
+        /   %td= link_to 'Edit', edit_appointment_path(appointment)
+        /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }

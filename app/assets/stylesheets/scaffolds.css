@@ -221,3 +221,7 @@ body {
     font-weight: 80000;
     color: white !important;
   }
+
+  .search-wrapper, .search-button {
+    padding: 0px;
+  }
