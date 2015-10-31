@@ -34,7 +34,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git@github.com:romanvbabenko/ukrainian.git
+  remote: git://github.com/romanvbabenko/ukrainian.git
   revision: 6926aef16ab9a5ff590c2f3ff22b5f9c74832deb
   specs:
     ukrainian (2.6.0)

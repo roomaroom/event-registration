@@ -1,5 +1,7 @@
-%h1 Найближчі школи
 .container
+  %br
+  %h1 Список майбутніх шкіл
+  %br
   .row
     .col-xs-12.col-sm-12
       %ul.event-list
@@ -15,7 +17,7 @@
               .start-date Закінчення
               /%span.day 4
               %span.month= l(event.end_time, format: '%I:%M %d %b')
-              
+
             /%img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
             /= image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
             = link_to  event.photo.url, "data-lightbox" => "roadtrip" do
@@ -37,4 +39,4 @@
             /     %li.facebook{:style => "width:33%;"}
             /       %a{:href => "#facebook"}
             /         %span.fa.fa-gears
-     
+

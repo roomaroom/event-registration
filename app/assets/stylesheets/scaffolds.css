@@ -23,13 +23,13 @@ body {
     display: inline-block;
     width: 100%;
     color: rgb(255, 255, 255);
-    background-color: rgb(197, 44, 102);
+    background-color: #982395;
     padding: 5px;
     text-align: center;
     text-transform: uppercase;
   }
   .event-list > li:nth-child(even) > time {
-    background-color: rgb(165, 82, 167);
+    background-color: #145B25;
   }
   .event-list > li > time > span {
     display: none;
@@ -93,13 +93,13 @@ body {
     width: 100%;
     color: rgb(30, 30, 30);
     text-decoration: none;
-  } 
-    .event-list > li > .social > ul > li {    
+  }
+    .event-list > li > .social > ul > li {
         padding: 0px;
     }
     .event-list > li > .social > ul > li > a {
         padding: 3px 0px;
-  } 
+  }
   .event-list > li > .info > ul > li:hover,
   .event-list > li > .social > ul > li:hover {
     color: rgb(30, 30, 30);
@@ -164,8 +164,8 @@ body {
       height: 200px;
       text-align: left;
       padding-right: 40px;
-    } 
-    .event-list > li > .info > .title, 
+    }
+    .event-list > li > .info > .title,
     .event-list > li > .info > .desc {
       padding: 0px 10px;
     }
@@ -190,7 +190,7 @@ body {
         .event-list > li > .social > ul {
             border-left: 1px solid rgb(230, 230, 230);
         }
-    .event-list > li > .social > ul > li {      
+    .event-list > li > .social > ul > li {
       display: block;
             padding: 0px;
     }
@@ -201,22 +201,22 @@ body {
     }
   }
 
-  .register { 
-    background-color: #337ab7;
+  .register {
+    background-color: #0087CB;
   }
 
-  li.register:hover{ 
+  li.register:hover{
     background-color: #286090 !important;
   }
 
-  li.map:hover { 
+  li.map:hover {
     background-color: #449d44 !important;
   }
 
-  .map { 
-    background-color: #5cb85c;
+  .map {
+    background-color: #00A03E;
   }
-  
+
   .map a, .register  a {
     font-weight: 80000;
     color: white !important;
@@ -225,3 +225,4 @@ body {
   .search-wrapper, .search-button {
     padding: 0px;
   }
+

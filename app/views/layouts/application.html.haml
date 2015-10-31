@@ -10,10 +10,10 @@
     = csrf_meta_tags
   %body
     = render 'layouts/navigation'
-  .container
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+    .container
+      %main{:role => "main"}
+        = render 'layouts/messages'
+        = yield
 
 / .container
 /     %header

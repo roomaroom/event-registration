@@ -3,3 +3,35 @@
 @import "bootstrap";
 @import "lightbox";
 @import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Crafty+Girls);
+
+.navbar-inverse {
+  background-image: asset_url("150fonHEADER.jpg");
+}
+.navbar-nav1 {
+  padding-top: 5px;
+}
+
+.name-site {
+  font-size: 32px;
+  color: white;
+  font-family: "Ubuntu";
+}
+
+.navbar-nav > li > a {
+  color: #EDE3E3 !important;
+  font-size: 18px;
+}
+
+.navbar-nav > li > a:hover {
+  color: white !important;
+}
+
+body {
+  font-family: "Ubuntu";
+  padding-top: 150px !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ubuntu";
+}
