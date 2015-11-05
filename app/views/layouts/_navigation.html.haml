@@ -1,5 +1,5 @@
 -# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-inverse.navbar-fixed-top
+%nav.navbar.navbar-inverse
   .container
     .navbar-header
       %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -7,9 +7,8 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      /= link_to 'Школа Марії', authenticated_root_path, class: 'navbar-brand'
-      = image_tag 'icon.png'
-
+      = link_to authenticated_root_path do
+        = image_tag 'icon.png'
     #navbar.collapse.navbar-collapse
       %h1.name-site Реєстрація на Школу Християнського Життя і Євангелізації Святої Діви Марії з Назарету Матері Церкви
       %ul.nav.navbar-nav

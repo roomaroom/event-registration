@@ -34,13 +34,18 @@ class AppointmentsController < ApplicationController
   end
 
   def search
-    if params[:q].present?
-      @appointments = Appointment.search(params[:q]).records.page(params[:page]).per(20)
+    if params[:term].present?
+      @users = User.where("name LIKE ? OR CAST(mobile AS TEXT)  LIKE ?", "%#{params[:term]}%", "%#{params[:term]}%")
+      @appointments = Appointment.where(user: @users)
+      #@appointments = Appointment.search(params[:term]).records.page(params[:page]).per(20)
       #@appointments = @appointments.where(event_id: params[:event_id])
     end
     respond_to do |format|
-      format.html
+      format.html { render :index }
       format.js
+      
+      format.json { render :json => @users.map(& :name) }
+      #format.json { render :json => @appointments.map { |a| a.user.email } }
     end
   end
 

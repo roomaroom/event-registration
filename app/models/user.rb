@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :servant, :admin]
 
   has_many :appointments
   has_many :events, through: :appointments

@@ -13,7 +13,6 @@
 
   %tbody
     - @appointments.each do |appointment|
-
       %tr
         = simple_form_for(appointment) do |f|
           = f.error_notification
@@ -35,7 +34,8 @@
           %td
             .form-actions
               /= f.button :submit
-              = f.submit 'Зберегти', class: 'btn btn-primary'
+              = f.submit 'Зберегти', class: 'btn btn-primary save'
+   
         /   %td= link_to 'Show', appointment
         /   %td= link_to 'Edit', edit_appointment_path(appointment)
         /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
