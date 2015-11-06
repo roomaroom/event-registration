@@ -59,7 +59,7 @@ class AppointmentsController < ApplicationController
 
     def appointment_params
       appointment_params = params[:appointment]
-      appointment_params ? appointment_params.permit(:user_id, :event_id, :notice, :payment, :paid) : {}
+      appointment_params ? appointment_params.permit(:user_id, :event_id, :notice, :payment, :paid, :level) : {}
       #params.require(:appointment).permit(:user_id, :event_id, :notice, :payment, :paid)
     end
 

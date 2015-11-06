@@ -1,17 +1,24 @@
 ActiveAdmin.register Appointment do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
+permit_params :notice, :payment, :paid, :level, :done
 # permit_params do
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if resource.something?
 #   permitted
 # end
 
-
+  index do
+    column "Ім'я" do |c|
+      c.user.name
+    end
+    column "Телефон" do |c|
+      c.user.mobile
+    end
+    column 'Нотатки', :notice 
+    column 'Оплата', :payment
+    column 'Оплачено', :paid
+    column 'Ступінь', :level
+    column 'Зараховано', :done
+    actions
+  end
 end
