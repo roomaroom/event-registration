@@ -11,3 +11,6 @@ $ ->
 
   $('#term').autocomplete
     source: '/appointments/search'
+    minChars: 3,
+    select:  ( event, ui ) -> 
+      $('.form-search').submit()

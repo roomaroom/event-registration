@@ -4,7 +4,8 @@
       %th Ім'я
       %th Телефон
       %th Нотатка
-      %th Сума
+      %th Заплановано Оплатити
+      %th Оплачено
       %th Title
       %th Зберегти
       %th
@@ -22,16 +23,18 @@
           /     = f.input :notice
           /   .form-actions
           /     = f.button :submit
-          %td= appointment.user.name
-          %td= appointment.user.mobile
-          %td
+          %td.active= appointment.user.name
+          %td.warning= appointment.user.mobile
+          %td.success
             .form-inputs
               = f.input :notice, label: false
-          %td
+          %td.info
+            = f.object.payment
+          %td.active
             .form-inputs
-              = f.input :payment, label: false
-          %td= appointment.event.title
-          %td
+              = f.input :paid, label: false
+          %td.warning= appointment.event.title
+          %td.active
             .form-actions
               /= f.button :submit
               = f.submit 'Зберегти', class: 'btn btn-primary save'

@@ -22,6 +22,7 @@ class AppointmentsController < ApplicationController
     load_appointment
     build_appointment
     if @appointment.save
+      current_user.increment!(:amount, @appointment.paid) if current_user.present?
       redirect_to appointments_path, notice: "Оновлено"
     else
       redirect_to :back
@@ -47,6 +48,11 @@ class AppointmentsController < ApplicationController
       format.json { render :json => @users.map(& :name) }
       #format.json { render :json => @appointments.map { |a| a.user.email } }
     end
+  end
+
+  def destroy
+    load_appointment.destroy
+    redirect_to :back                                  
   end
 
   private

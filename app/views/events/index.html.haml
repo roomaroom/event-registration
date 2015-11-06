@@ -31,8 +31,12 @@
               %ul
                 %li.map{:style => "width:50%;"}
                   = link_to 'Карта', edit_event_path(event)
-                %li.register{:style => "width:50%;"}
-                  = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
+                - if current_user.events.include? event
+                  %li.remove{:style => "width:50%;"}
+                    = link_to 'Скасувати Реєстрацію', current_user.appointments.where(event_id: event.id).first, :method => :delete, :data => { :confirm => 'Ви впевнені?' }, class: 'btn btn-defaul'
+                - else
+                  %li.register{:style => "width:50%;"}
+                    = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
 
             / .social
             /   %ul

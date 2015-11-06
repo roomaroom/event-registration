@@ -1,7 +1,7 @@
 %h1 Записи
 .container
   .row
-    .col-xs-9.col-sm-9.col-xs-offse1t-2
+    .col-xs-9.col-sm-9
       = form_tag('/appointments/search', method: 'get', class: 'form-search') do
         .col-xs-3
           /= select_tag(:event_id, options_for_select(Event.all.collect {|u| [u.title, u.id]}), class: 'form-control')
@@ -10,6 +10,9 @@
         .form-group1.col-xs-1.search-button
           %button.btn.btn-primary
             %span.glyphicon.glyphicon-search
+    .col-xs-3.col-sm-3
+      %h5 Отримано Грошей #{current_user.amount}
+      = link_to "Очистити", clear_amount_users_path
 /%br
 %hr
 .appointments-js

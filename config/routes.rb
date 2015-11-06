@@ -19,11 +19,15 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :events
+  resources :events 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount Upmin::Engine => '/admin1'
   #root to: 'visitors#index'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'clear_amount'
+    end
+  end
 end

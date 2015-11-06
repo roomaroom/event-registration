@@ -1,6 +1,6 @@
 body {
   
-  background-color: rgb(220, 220, 220);
+  #background-color: rgb(220, 220, 220);
 }
 .starter-template {
   padding: 40px 15px;
@@ -205,10 +205,19 @@ body {
     background-color: #0087CB;
   }
 
+  .remove {
+    background-color: #d9534f;
+  }
+
+
   li.register:hover{
     background-color: #286090 !important;
   }
 
+  li.remove:hover{
+    background-color: #c9302c !important;
+  }
+ 
   li.map:hover {
     background-color: #449d44 !important;
   }
@@ -217,7 +226,7 @@ body {
     background-color: #00A03E;
   }
 
-  .map a, .register  a {
+  .map a, .register  a, .remove a {
     font-weight: 80000;
     color: white !important;
   }
