@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, ActiveAdmin::Devise.config
   get 'static_pages/about'
   get 'static_pages/help'
 
-  devise_for :users
   devise_scope :user do
     authenticated :user do
       root to: 'events#index', as: :authenticated_root
