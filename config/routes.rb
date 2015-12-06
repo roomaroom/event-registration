@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users
   get 'static_pages/about'
   get 'static_pages/help'
 
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root to: "visitors#index", as: :unauthenticated_root
+      root to: "events#index", as: :unauthenticated_root
     end
   end
 
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  
-  resources :events 
+
+  resources :events
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount Upmin::Engine => '/admin1'

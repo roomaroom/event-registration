@@ -5,29 +5,28 @@
     %fieldset
       .form-group.input-group
         %span.input-group-addon
-          @
+          %i.fa.fa-mobile
         = f.input :mobile, :autofocus => true, :placeholder => "Телефон", class: 'form-control', label: false
-    %fieldset
       .form-group.input-group
         %span.input-group-addon
-          @
-        = f.input :name, :placeholder => "Ім'я і прізвище", class: 'form-control', label: false
+          %i.fa.fa-info
+        = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: false
       .form-group.input-group
         %span.input-group-addon
-          @
+          %i.fa.fa-at
         = f.input :email, :placeholder => "Email", class: 'form-control', label: false, :type => "email"
       .form-group.input-group
         %span.input-group-addon
-          @
+          %i.fa.fa-info
         = f.input :city, :placeholder => "Місто", class: 'form-control', label: false
-      .form-group.input-group
-        %span.input-group-addon
-          @
-        = f.input :level, :placeholder => "Ступінь", class: 'form-control', label: false
-      .form-group.input-group
-        %span.input-group-addon
-          @
-        = f.input :community, :placeholder => "Парафія або спільнота", class: 'form-control', label: false
+      / .form-group.input-group
+      /   %span.input-group-addon
+      /     @
+      /   = f.input :level, :placeholder => "Ступінь", class: 'form-control', label: false
+      / .form-group.input-group
+      /   %span.input-group-addon
+      /     @
+      /   = f.input :community, :placeholder => "Парафія або спільнота", class: 'form-control', label: false
       .form-group.input-group
         %span.input-group-addon
           %i.glyphicon.glyphicon-lock

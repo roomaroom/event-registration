@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   # before_action :load_event, :only => :new
+  before_action :authenticate_user!
 
   def new
     load_event
@@ -44,7 +45,7 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.js
-      
+
       format.json { render :json => @users.map(& :name) }
       #format.json { render :json => @appointments.map { |a| a.user.email } }
     end
@@ -52,7 +53,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     load_appointment.destroy
-    redirect_to :back                                  
+    redirect_to :back
   end
 
   private
