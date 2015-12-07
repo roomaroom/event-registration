@@ -9,17 +9,18 @@ class ApplicationController < ActionController::Base
   def resource_name
     :user
   end
- 
+
   def resource
     @resource ||= User.new
   end
- 
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :name << :mobile << :city << :community
+    devise_parameter_sanitizer.for(:sign_up) << :name << :mobile << :city << :community << :email
+    devise_parameter_sanitizer.for(:sign_in) << :login << :password << :email
     devise_parameter_sanitizer.for(:account_update) << :name << :mobile << :city << :community
   end
 end

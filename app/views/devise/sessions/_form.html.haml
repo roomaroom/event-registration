@@ -1,22 +1,56 @@
-#form-olvidado{:style => "padding: 20px;"}
-  = simple_form_for(:user, :url => session_path(:user), :html => { :role => 'form'}) do |f|
-    %h4
-      Увійти
-    %fieldset
-      .form-group.input-group
-        %span.input-group-addon
-          @
-        = f.input :email, :autofocus => true, :placeholder => "Email", class: 'form-control', label: false, :type => "email"
-      .form-group.input-group
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-lock
-        = f.input :password, class: 'form-control', :placeholder => "Password", :required => true, :type => "password", label: false
-        /%input.form-control{:name => "password", :placeholder => "Password", :required => "", :type => "password", :value => ""}/
-      .form-group
-        %button.btn.btn-primary.btn-block{:type => "submit"}
-          Увійти
-        %p.help-block
-          %a#olvidado.pull-right.text-muted{:href => "#{new_password_path(resource_name)}"}
-            %small Забули пароль?
-          / %a#olvidado2.pull-left.text-muted{:href => "#"}
-          /   %small Signup!
+/ #form-olvidado{:style => "padding: 20px;"}
+/   = simple_form_for(:user, :url => session_path(:user), :html => { :role => 'form'}) do |f|
+/     %h4
+/       Увійти
+/     %fieldset
+/       .form-group.input-group
+/         %span.input-group-addon
+/           @ |
+/           %i.fa.fa-mobile
+/         = f.input :login, :autofocus => true, :placeholder => "Email або телефон", class: 'form-control', label: false, :type => "email"
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.glyphicon.glyphicon-lock
+/         = f.input :password, class: 'form-control', :placeholder => "Password", :required => true, :type => "password", label: false
+/         /%input.form-control{:name => "password", :placeholder => "Password", :required => "", :type => "password", :value => ""}/
+/       .form-group
+/         %button.btn.btn-primary.btn-block{:type => "submit"}
+/           Увійти
+/         %p.help-block
+/           %a#olvidado.pull-right.text-muted{:href => "#{new_password_path(resource_name)}"}
+/             %small Забули пароль?
+/           / %a#olvidado2.pull-left.text-muted{:href => "#"}
+/           /   %small Signup!
+.container
+  #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
+    .panel.panel-info
+      .panel-heading
+        .panel-title Увійти
+        %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}
+          = link_to "Забули пароль?", new_password_path(resource_name), class: 'right'
+      .panel-body{:style => "padding-top:30px"}
+        #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
+        = simple_form_for(:user, :url => session_path(:user), :html => { :role => 'form', class: 'form-horizontal'}) do |f|
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.input :login, :autofocus => true, :placeholder => "Email або телефон", label: false, :type => "email"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-lock
+            = f.input :password, class: 'form-control', :placeholder => "Password", :required => true, :type => "password", label: false
+          .input-group
+            .checkbox
+              %label
+                = f.check_box :remember_me
+                Запам'ятати мене з цього комп'ютера
+          .form-group{:style => "margin-top:10px"}
+            / Button
+            .col-sm-12.controls
+              %button.btn.btn-success.btn-block{:type => "submit"}
+                Увійти
+          .form-group
+            .col-md-12.control
+              %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
+                Ще не створили акаунт!
+                = link_to 'Зареєструватися', new_registration_path(resource_name), class: 'right'

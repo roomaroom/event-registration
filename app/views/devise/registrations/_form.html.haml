@@ -1,43 +1,68 @@
-#form-olvidado{:style => "padding: 20px;"}
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
-    %h4
-      Зареєструватися
-    %fieldset
-      .form-group.input-group
-        %span.input-group-addon
-          %i.fa.fa-mobile
-        = f.input :mobile, :autofocus => true, :placeholder => "Телефон", class: 'form-control', label: false
-      .form-group.input-group
-        %span.input-group-addon
-          %i.fa.fa-info
-        = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: false
-      .form-group.input-group
-        %span.input-group-addon
-          %i.fa.fa-at
-        = f.input :email, :placeholder => "Email", class: 'form-control', label: false, :type => "email"
-      .form-group.input-group
-        %span.input-group-addon
-          %i.fa.fa-info
-        = f.input :city, :placeholder => "Місто", class: 'form-control', label: false
-      / .form-group.input-group
-      /   %span.input-group-addon
-      /     @
-      /   = f.input :level, :placeholder => "Ступінь", class: 'form-control', label: false
-      / .form-group.input-group
-      /   %span.input-group-addon
-      /     @
-      /   = f.input :community, :placeholder => "Парафія або спільнота", class: 'form-control', label: false
-      .form-group.input-group
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-lock
-        = f.input :password, class: 'form-control', :placeholder => "Введіть пароль", :required => true, :type => "password", label: false
-      .form-group.input-group
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-lock
-        = f.input :password_confirmation, class: 'form-control', :placeholder => "Повторіть пароль", :required => true, :type => "password", label: false
-      .form-group
-        %button.btn.btn-primary.btn-block{:type => "submit"}
-          Зареєструватися
-        %p.help-block
-          %a#olvidado.pull-right.text-muted{:href => "#{new_password_path(resource_name)}"}
-            %small Увійти
+/ #form-olvidado{:style => "padding: 20px;"}
+/   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+/     %h4
+/       Зареєструватися
+/     %fieldset
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.fa.fa-mobile
+/         = f.input :mobile, :autofocus => true, :placeholder => "Телефон", class: 'form-control', label: false
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.fa.fa-info
+/         = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: false
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.fa.fa-at
+/         = f.input :email, :placeholder => "Email", class: 'form-control', label: false, :type => "email"
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.fa.fa-info
+/         = f.input :city, :placeholder => "Місто", class: 'form-control', label: false
+/       / .form-group.input-group
+/       /   %span.input-group-addon
+/       /     @
+/       /   = f.input :level, :placeholder => "Ступінь", class: 'form-control', label: false
+/       / .form-group.input-group
+/       /   %span.input-group-addon
+/       /     @
+/       /   = f.input :community, :placeholder => "Парафія або спільнота", class: 'form-control', label: false
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.glyphicon.glyphicon-lock
+/         = f.input :password, class: 'form-control', :placeholder => "Введіть пароль", :required => true, :type => "password", label: false
+/       .form-group.input-group
+/         %span.input-group-addon
+/           %i.glyphicon.glyphicon-lock
+/         = f.input :password_confirmation, class: 'form-control', :placeholder => "Повторіть пароль", :required => true, :type => "password", label: false
+/       .form-group
+/         %button.btn.btn-primary.btn-block{:type => "submit"}
+/           Зареєструватися
+/         %p.help-block
+/           %a#olvidado.pull-right.text-muted{:href => "#{new_password_path(resource_name)}"}
+/             %small Увійти
+
+.container
+  #signupbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => " margin-top:50px"}
+    .panel.panel-info
+      .panel-heading
+        .panel-title Зареєструватися
+        %div{:style => "float:right; font-size: 85%; position: relative; top:-10px"}
+          = link_to "Увійти", new_session_path(resource_name), class: 'right'
+      .panel-body
+        = simple_form_for(resource, :as => resource_name, wrapper: 'horizontal_form', :url => registration_path(resource_name), :html => { :role => 'form', class: 'form-horizontal', wrapper: 'horizontal_form' }) do |f|
+          #signupalert.alert.alert-danger{:style => "display:none"}
+            %p Error:
+            %span
+          = f.input :mobile, :autofocus => true, :placeholder => "Телефон", class: 'form-control'
+          = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control'
+          = f.input :email, :placeholder => "Email", class: 'form-control', :type => "email"
+          = f.input :city, :placeholder => "Місто", class: 'form-control'
+          = f.input :password, class: 'form-control', :placeholder => "Введіть пароль", :required => true, :type => "password"
+          = f.input :password_confirmation, class: 'form-control', :placeholder => "Повторіть пароль", :required => true, :type => "password"
+          .form-group
+            / Button
+            .col-md-offset-3.col-md-9
+              %button.btn.btn-success.btn-block{:type => "submit"}
+                Зареєструватися
+

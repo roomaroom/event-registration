@@ -38,6 +38,7 @@ uk:
         name: "Ім'я"
         mobile: "Телефон"
         created_at: "Створено"
+        city: "Місто"
         password: 'Пароль'
         password_confirmation: 'Повторити Пароль'
       admin_user:
