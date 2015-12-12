@@ -1,0 +1,6 @@
+.modal.fade.bs-example-modal-lg.map-search{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", class: event.id, id: event.id}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body
+        %div
+          .event-location{ style: "width: 850px; height: 500px;", data: { markers: "[{\"lat\":#{event.latitude},\"lng\":#{event.longitude}}]", zoom: 10, styles: map_styles.to_json }, id: 'map' + event.id.to_s }

@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :events, through: :appointments
 
-  validates_presence_of :name, :mobile
+  validates_presence_of :name, :mobile, :city
+  validates :mobile, format: { with: /\+?\d{1,4}?[-\s]?\(?\d{1,3}?\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}/,
+            message: 'Неправильний формат телефону' }
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

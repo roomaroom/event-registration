@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require gmaps/google
 //= require bootstrap-sprockets
 //= require jquery.geocomplete.min
 //= require lightbox
+//= require underscore
 //= require_tree .

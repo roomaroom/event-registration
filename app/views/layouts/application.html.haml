@@ -5,6 +5,7 @@
     %title= content_for?(:title) ? yield(:title) : 'School'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'School'}"}
     %script{:src => "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places", :type => "text/javascript"}
+    %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", :type => "text/javascript"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags

@@ -37,6 +37,9 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'andand'
 gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails', git: 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'gmaps4rails'
+gem 'geocoder'
+gem 'underscore-rails'
 
 group :development do
   gem "letter_opener"
