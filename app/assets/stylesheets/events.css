@@ -1,5 +1,5 @@
 body {
-  
+
   #background-color: rgb(220, 220, 220);
 }
 .starter-template {
@@ -63,7 +63,6 @@ body {
     margin: 0px;
   }
   .event-list > li > .info > .desc {
-    /font-size: 13pt;
     font-weight: 300;
     margin: 0px;
   }
@@ -217,7 +216,7 @@ body {
   li.remove:hover{
     background-color: #c9302c !important;
   }
- 
+
   li.map:hover {
     background-color: #449d44 !important;
   }
