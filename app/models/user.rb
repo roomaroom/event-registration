@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :events, through: :appointments
 
-  validates_presence_of :name, :mobile, :city
+  validates_presence_of :name, :mobile, :city, :email
   validates :mobile, format: { with: /\+?\d{1,4}?[-\s]?\(?\d{1,3}?\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}/,
             message: 'Неправильний формат телефону' }
 
@@ -36,4 +36,12 @@ class User < ActiveRecord::Base
   def login
     @login || self.mobile || self.email
   end
+
+  # def email_required?
+  #   false
+  # end
+
+  # def email_changed?
+  #   false
+  # end
 end
