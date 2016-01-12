@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :validatable, :authentication_keys => {email: true, login: false}
+         :validatable, :authentication_keys => { login: true, email: false}
   after_initialize :set_default_role, :if => :new_record?
 
   attr_accessor :login

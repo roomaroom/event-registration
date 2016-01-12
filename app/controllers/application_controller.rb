@@ -18,15 +18,15 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) << :name << :mobile << :city << :community << :email
-  #   devise_parameter_sanitizer.for(:sign_in) << :login << :password << :email
-  #   devise_parameter_sanitizer.for(:account_update) << :name << :mobile << :city << :community << :email
-  # end
-
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :mobile, :email, :password, :password_confirmation, :city, :community) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :mobile, :email, :password, :password_confirmation, :city, :community, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :mobile, :email, :city, :community, :password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:sign_up) << :name << :mobile << :city << :community << :email
+    devise_parameter_sanitizer.for(:sign_in) << :login << :password << :email
+    devise_parameter_sanitizer.for(:account_update) << :name << :mobile << :city << :community << :email
   end
+
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :mobile, :email, :password, :password_confirmation, :city, :community) }
+  #   devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :mobile, :email, :password, :password_confirmation, :city, :community, :remember_me) }
+  #   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :mobile, :email, :city, :community, :password, :password_confirmation, :current_password) }
+  # end
 end

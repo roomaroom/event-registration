@@ -30,11 +30,11 @@
           = link_to "Забули пароль?", new_password_path(resource_name), class: 'right'
       .panel-body{:style => "padding-top:30px"}
         #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
-        = simple_form_for(:user, :url => session_path(:user), :html => { :role => 'form', class: 'form-horizontal'}) do |f|
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', class: 'form-horizontal'}) do |f|
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.input :login, :autofocus => true, :placeholder => "Email або телефон", label: false, :type => "email"
+            = f.input :login, :autofocus => true, :placeholder => "Email або телефон", label: false
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
