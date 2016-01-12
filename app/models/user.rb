@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  enum role: [:user, :servant, :admin]
+  enum role: [:user, :servant]
 
   has_many :appointments
   has_many :events, through: :appointments

@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   # before_action :load_event, :only => :new
   before_action :authenticate_user!
+  before_action :admin_only, :except => :new
 
   def new
     load_event
@@ -57,6 +58,11 @@ class AppointmentsController < ApplicationController
   end
 
   private
+    def admin_only
+      unless current_user.servant?
+        redirect_to :back, :alert => "Access denied."
+      end
+    end
 
     def appointment_params
       appointment_params = params[:appointment]
@@ -78,12 +84,14 @@ class AppointmentsController < ApplicationController
     end
 
     def save_appointment
-      if @appointment.save
-        redirect_to events_path, notice: "Ви успішно зареєстровані"
-      else
-        redirect_to :back
+      respond_to do |format|
+        if @appointment.save
+          format.html {  redirect_to events_path, notice: "Ви успішно зареєстровані" }
+        else
+          format.html { redirect_to new_appointment_path(@appointment, :event_id => params[:appointment][:event_id]), notice: 'Заповніть будь ласка ступінь'  }
+          format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        end
       end
-      #end
     end
 end
 

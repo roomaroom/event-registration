@@ -1,7 +1,7 @@
 %li= link_to 'Події', events_path
 - if user_signed_in?
   //%li= link_to 'Редагувати профіль', edit_user_registration_path
-  %li= link_to 'Записи', appointments_path unless current_user.servant?
+  %li= link_to 'Записи', appointments_path if current_user.servant?
   %li= link_to 'Вийти', destroy_user_session_path, :method=>'delete'
 - else
   %li= link_to 'Увійти', new_user_session_path
