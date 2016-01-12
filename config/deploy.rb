@@ -14,9 +14,9 @@
 # set :keep_releases, 5
 
 # config valid only for Capistrano 3.1
-#lock '3.4.0'
-set :application, 'Scholl'
-set :repo_url, 'https://github.com/roomaroom/event-registration.git'
+lock '3.4.0'
+set :application, 'School'
+set :repo_url, 'git@github.com:roomaroom/event-registration.git'
 set :shared_path, "/home/school/production/school/shared"
 set :branch, 'master'
 set :scm, :git
@@ -33,7 +33,7 @@ set :deploy_via, :remote_cache
 set :linked_files, %w(config/database.yml)
 # Default value for :scm is :git
 # set :scm, :git
-set :unicorn_config_path, "/home/school/production/kyc.uno/school/config/unicorn.rb"
+set :unicorn_config_path, "/home/school/production/school/shared/config/unicorn.rb"
 set :unicorn_pid, "/home/school/production/school/shared/pids/unicorn.pid"
 set :linked_dirs, %w{ bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads }
 # Default value for :format is :pretty
