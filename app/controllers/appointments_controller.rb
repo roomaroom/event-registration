@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   # before_action :load_event, :only => :new
   before_action :authenticate_user!
-  before_action :admin_only, :except => :new
+  before_action :admin_only, :only => :index
 
   def new
     load_event

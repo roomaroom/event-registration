@@ -40,6 +40,23 @@ GIT
     ukrainian (2.6.0)
       i18n
 
+GIT
+  remote: git://github.com/stefanoverna/activeadmin-dragonfly.git
+  revision: 611164ff0255c66a3e555b5d46dd99f0eff1f115
+  specs:
+    activeadmin-dragonfly (0.0.2)
+      activeadmin
+      dragonfly (= 0.9.15)
+      rack-cache
+
+GIT
+  remote: git://github.com/stefanoverna/activeadmin-wysihtml5.git
+  revision: cf609b7bd4331866a261bd04da81fd84b80d9469
+  specs:
+    activeadmin-wysihtml5 (1.0.0)
+      activeadmin
+      activeadmin-dragonfly
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -157,6 +174,9 @@ GEM
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
     diff-lcs (1.2.5)
+    dragonfly (0.9.15)
+      multi_json (~> 1.0)
+      rack
     elasticsearch (1.0.14)
       elasticsearch-api (= 1.0.14)
       elasticsearch-transport (= 1.0.14)
@@ -286,6 +306,8 @@ GEM
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
+    rack-cache (1.5.1)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -422,6 +444,8 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activeadmin-dragonfly!
+  activeadmin-wysihtml5!
   andand
   better_errors
   bootstrap-datepicker-rails!

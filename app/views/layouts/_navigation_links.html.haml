@@ -6,6 +6,7 @@
 - else
   %li= link_to 'Увійти', new_user_session_path
   %li= link_to 'Зареєструватися', new_user_registration_path
+%li= link_to 'Про Нас', static_pages_about_path
 - if user_signed_in?
   - if current_user.try(:admin?)
     %li= link_to 'Admin', '/admin'
