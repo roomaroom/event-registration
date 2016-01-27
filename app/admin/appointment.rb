@@ -15,7 +15,13 @@ ActiveAdmin.register Appointment do
     column "Телефон" do |c|
       c.user.mobile
     end
-    column 'Нотатки', :notice 
+    column "Стать" do |c|
+      c.user.sex
+    end
+    column "ДН" do |c|
+      DateTime.now.year - c.user.birthday.year if c.user.birthday.present?
+    end
+    column 'Нотатки', :notice
     column 'Оплата', :payment
     column 'Оплачено', :paid
     column 'Ступінь', :level

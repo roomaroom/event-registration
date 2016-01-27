@@ -42,6 +42,7 @@ gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails', git: 'g
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'underscore-rails'
+#gem 'activeadmin-axlsx'
 
 group :development do
   gem "letter_opener"

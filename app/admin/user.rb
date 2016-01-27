@@ -8,6 +8,8 @@ ActiveAdmin.register User do
     column :name
     column :role
     column :mobile
+    column :sex
+    column :birthday
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -20,6 +22,8 @@ ActiveAdmin.register User do
       row :city
       row :community
       row :role
+      row :sex
+      row :birthday
       row :created_at
     end
   end

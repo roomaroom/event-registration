@@ -2,21 +2,29 @@
   %h3
     Редагувати Профіль
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
-    = f.input :name, :autofocus => true, label: "Ім'я і Прізвище", class: 'form-control'
-    = f.input :mobile,  label: "Телефон", class: 'form-control'
-    = f.input :email, class: 'form-control'
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %div
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    .well
+      = f.input :mobile, :autofocus => true, :placeholder => "Наприклад 0981234567", class: 'form-control'
+      = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: "Стать"
+      = f.input :sex,  collection: [['чоловіча', :male ], ['жіноча', :female]], class: 'form-control', label: "Стать"
+      = f.input :birthday,  as: :string,  input_html: { data: { provide: 'datepicker' }, class: 'datepicker', value: ( f.object.birthday.strftime('%m/%d/%Y') if f.object.birthday.present?) } , class: 'form-control', label: "Дата Народження"
+      = f.input :email, :placeholder => "Email", class: 'form-control'
+      = f.input :city, :placeholder => "Місто", class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
     %fieldset
-      %p Залишіть ці поля пустими, якщо ви не хочети їх міняти.
-      = f.input :password, :autocomplete => 'off', label: 'Пароль', class: 'form-control'
-      = f.input :password_confirmation, label: 'Повторіть Пароль', class: 'form-control'
+      %p
+      .well
+        %p Залишіть ці поля пустими, якщо ви не хочети їх міняти.
+        = f.input :password, :autocomplete => 'off', label: 'Пароль', class: 'form-control'
+        = f.input :password_confirmation, label: 'Повторіть Пароль', class: 'form-control'
     %fieldset
-      %p Введіть ваш теперішній пароль, щоб ці зміни відбулися.
-      .form-group
-        = f.input :current_password, label: 'Теперешній Пароль', class: 'form-control'
-    = f.submit 'Оновити', :class => 'button right'
+      %p
+      .well
+        %p Введіть ваш теперішній пароль, щоб ці зміни відбулися.
+        .form-group
+          = f.input :current_password, label: 'Теперешній Пароль', class: 'form-control'
+    = f.submit 'Оновити', :class => 'btn btn-success button pull-right'
 / .authform
 /   %h3 Cancel Account
 /   %p Unhappy? We'll be sad to see you go.

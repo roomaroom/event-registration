@@ -15,7 +15,14 @@
 //= require jquery-ui
 //= require gmaps/google
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require jquery.geocomplete.min
 //= require lightbox
 //= require underscore
 //= require_tree .
+$(document).ready(function() {
+  $('.datepicker').datepicker({
+      format: "dd/mm/yyyy",
+      language: "ua"
+  });
+});

@@ -3,6 +3,8 @@
   //%li= link_to 'Редагувати профіль', edit_user_registration_path
   %li= link_to 'Записи', appointments_path if current_user.servant?
   %li= link_to 'Вийти', destroy_user_session_path, :method=>'delete'
+  %li= link_to 'Редагувати Профіль', edit_user_registration_path
+
 - else
   %li= link_to 'Увійти', new_user_session_path
   %li= link_to 'Зареєструватися', new_user_registration_path

@@ -35,7 +35,7 @@ uk:
     attributes:
       user:
         email: "Email"
-        name: "Ім'я"
+        name: "Ім'я та Прізвище"
         mobile: "Телефон"
         created_at: "Створено"
         city: "Місто"

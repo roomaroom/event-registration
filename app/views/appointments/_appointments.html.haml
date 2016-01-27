@@ -4,7 +4,7 @@
       %th Ім'я
       %th Телефон
       %th Нотатка
-      %th Заплановано Оплатити
+      /%th Заплановано Оплатити
       %th Оплачено
       %th Title
       %th Зберегти
@@ -28,8 +28,8 @@
           %td.success
             .form-inputs
               = f.input :notice, label: false
-          %td.info
-            = f.object.payment
+          / %td.info
+          /   = f.object.payment
           %td.active
             .form-inputs
               = f.input :paid, label: false
@@ -38,7 +38,7 @@
             .form-actions
               /= f.button :submit
               = f.submit 'Зберегти', class: 'btn btn-primary save'
-   
+
         /   %td= link_to 'Show', appointment
         /   %td= link_to 'Edit', edit_appointment_path(appointment)
         /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }

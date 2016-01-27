@@ -9,11 +9,12 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   enum role: [:user, :servant]
+  enum sex: [:male, :female]
 
   has_many :appointments
   has_many :events, through: :appointments
 
-  validates_presence_of :name, :mobile, :city, :email
+  validates_presence_of :name, :mobile, :city, :email, :sex, :birthday
   validates :mobile, format: { with: /\+?\d{1,4}?[-\s]?\(?\d{1,3}?\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}/,
             message: 'Неправильний формат телефону' }
 
