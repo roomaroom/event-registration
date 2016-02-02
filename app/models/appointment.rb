@@ -4,11 +4,13 @@ class Appointment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
+  has_many :children, dependent: :destroy
+  accepts_nested_attributes_for :children, allow_destroy: true
 
   validates_presence_of :level
   default_scope { order('created_at DESC') }
 
-  enum payment: { 'Повна вартість 100грн'=> 100, 'Для студентів 70грн'=> 70, 'Без Харчування 40грн'=> 40, 'Не маю можливості заплатити'=> 0 }
+  enum payment: { 'Повна вартість 100грн'=> 100, 'Для студентів 70грн'=> 70, 'Без Харчування 40грн'=> 40, 'Інше (написати у примітках)'=> 0 }
 
 #   def as_indexed_json(options={})
 #     as_json(

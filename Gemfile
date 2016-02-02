@@ -32,6 +32,8 @@ gem 'haml-rails'
 gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
+gem 'nested_form'
+gem 'remotipart', '~> 1.2.1'
 gem 'upmin-admin'
 gem 'carrierwave'
 gem "mini_magick"

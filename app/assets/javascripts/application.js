@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.remotipart
+//= require jquery_nested_form
 //= require gmaps/google
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
@@ -20,9 +22,13 @@
 //= require lightbox
 //= require underscore
 //= require_tree .
+
 $(document).ready(function() {
   $('.datepicker').datepicker({
+      defaultViewDate: { year: 1975 },
+      startView: 2,
       format: "dd/mm/yyyy",
       language: "ua"
+
   });
 });

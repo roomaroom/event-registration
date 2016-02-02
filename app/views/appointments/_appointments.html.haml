@@ -3,8 +3,10 @@
     %tr
       %th Ім'я
       %th Телефон
+      %th Вік
+      %th Ступінь
       %th Нотатка
-      /%th Заплановано Оплатити
+      %th Заплановано Оплатити
       %th Оплачено
       %th Title
       %th Зберегти
@@ -25,11 +27,17 @@
           /     = f.button :submit
           %td.active= appointment.user.name
           %td.warning= appointment.user.mobile
+          %td.active
+            = (Time.now.to_s(:number).to_i - appointment.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if appointment.user.birthday.present?
+            //= DateTime.now - appointment.user.birthday if appointment.user.birthday.present?
+          %td.info
+            .form-inputs
+              = f.input :level, label: false
           %td.success
             .form-inputs
               = f.input :notice, label: false
-          / %td.info
-          /   = f.object.payment
+          %td.info
+            = f.object.payment
           %td.active
             .form-inputs
               = f.input :paid, label: false
