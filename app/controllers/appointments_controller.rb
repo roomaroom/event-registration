@@ -33,6 +33,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:appointment][:event_id])
     build_appointment
     save_appointment
   end
@@ -89,7 +90,7 @@ class AppointmentsController < ApplicationController
         if @appointment.save
           format.html {  redirect_to events_path, notice: "Ви успішно зареєстровані" }
         else
-          format.html { redirect_to new_appointment_path(@appointment, :event_id => params[:appointment][:event_id]), notice: 'Заповніть будь ласка ступінь'  }
+          format.html { render :new }
           format.json { render json: @appointment.errors, status: :unprocessable_entity }
         end
       end

@@ -1,5 +1,5 @@
 = simple_nested_form_for(@appointment, :html => { multipart: true, :role => 'form', class: 'form-horizontal'}) do |f|
-  = f.error_notification
+  /= f.error_notification
 
   .form-inputs
     = f.hidden_field :user_id,  value: "#{current_user.id}"
@@ -7,14 +7,14 @@
     = f.input :notice, label: 'Примітки', class: 'form-control'
     = f.input :level, label: 'Ступінь', required: true, class: 'form-control'
     = f.input :payment , as: :select, collection: Appointment.payments.keys , label: 'Форма оплати', include_blank: false
-    = f.fields_for :children do |c|
+    = f.fields_for :children do |child|
       %h3 Інформація про дитину
-      = c.input :name, label: "Ім'я та Прізвище", class: 'form-control'
-      = c.input :age, label: 'Вік(кількість років)', class: 'form-control'
-      / = с.hidden_field :_destroy
-      / = с.link_to_remove do
-      /   %i.fa.fa-trash
-      /   Remove
+      = child.input :name, label: "Ім'я та Прізвище", class: 'form-control'
+      = child.input :age, label: 'Вік(кількість років)', class: 'form-control'
+      = child.hidden_field :_destroy
+      = child.link_to_remove do
+        %i.fa.fa-trash
+        Видалити дитину
     = f.link_to_add "Зареєструвати дитину", :children
   .form-actions
     %p
