@@ -88,7 +88,7 @@ class AppointmentsController < ApplicationController
     def save_appointment
       respond_to do |format|
         if @appointment.save
-          format.html {  redirect_to events_path, notice: "Ви успішно зареєстровані" }
+          format.html {  redirect_to events_path, notice: "Ви успішно зареєстровані. Дякую!" }
         else
           format.html { render :new }
           format.json { render json: @appointment.errors, status: :unprocessable_entity }
