@@ -16,7 +16,7 @@
               %span.day -
               .start-date Закінчення
               /%span.day 4
-              %span.month= l(event.end_time, format: '%I:%M %e %b')
+              %span.month= l(event.end_time, format: '%k:%M %e %b')
 
             /%img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
             /= image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
