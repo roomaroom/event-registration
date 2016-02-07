@@ -6,6 +6,15 @@ GIT
       railties (>= 3.0)
 
 GIT
+  remote: git://github.com/boontdustie/active_admin_editor.git
+  revision: efc7df212173cbac65dc95ed50e6f5917ae049c0
+  specs:
+    active_admin_editor (1.1.0)
+      activeadmin (>= 0.4.0)
+      ejs
+      rails (>= 3.0.0)
+
+GIT
   remote: git://github.com/elasticsearch/elasticsearch-rails.git
   revision: ddc472623ae7cc2e262007cdc04e79c3d075962b
   specs:
@@ -177,6 +186,7 @@ GEM
     dragonfly (0.9.15)
       multi_json (~> 1.0)
       rack
+    ejs (1.1.1)
     elasticsearch (1.0.14)
       elasticsearch-api (= 1.0.14)
       elasticsearch-transport (= 1.0.14)
@@ -445,6 +455,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_editor!
   activeadmin!
   activeadmin-dragonfly!
   activeadmin-wysihtml5!

@@ -15,7 +15,7 @@ ActiveAdmin.register Event do
   form do |f|
     f.inputs 'Події' do
       f.input :title, label: 'Заголовок'
-      f.input :description, label: 'Опис'
+      f.input :description, label: 'Опис', as: :html_editor
       f.input :start_time, label: 'Початок'
       f.input :end_time, label: 'Закінчення'
       f.input :address, label: 'Адрес'

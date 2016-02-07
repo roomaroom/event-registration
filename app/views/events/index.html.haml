@@ -11,20 +11,18 @@
               .start-date Початок
               /%span.day 4
               %span.month= l(event.start_time, format: '%k:%M %e %b')
-              %span.year 2014
-              %span.time ALL DAY
+              / %span.year 2014
+              / %span.time ALL DAY
               %span.day -
               .start-date Закінчення
               /%span.day 4
               %span.month= l(event.end_time, format: '%k:%M %e %b')
-
-            /%img{:alt => "My 24th Birthday!", :src => "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"}/
-            /= image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
             = link_to  event.photo.url, "data-lightbox" => "roadtrip" do
               = image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
             .info
               %h2.title= event.title
-              %p.desc= event.description
+              .desc
+                = raw event.description
               %p.address
                 = fa_icon "map-marker"
                 = event.address
