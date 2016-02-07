@@ -12,6 +12,7 @@
       %h3 Інформація про дитину
       = child.input :name, label: "Ім'я та Прізвище", class: 'form-control'
       = child.input :age, label: 'Вік(кількість років)', class: 'form-control'
+      = child.input :payment , as: :select, collection: Child.payments.keys , label: 'Оплата за дитину', include_blank: false
       = child.hidden_field :_destroy
       = child.link_to_remove do
         %i.fa.fa-trash

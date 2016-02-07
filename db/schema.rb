@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202150212) do
+ActiveRecord::Schema.define(version: 20160207124928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20160202150212) do
     t.integer  "appointment_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "payment"
+    t.integer  "paid"
   end
 
   add_index "children", ["appointment_id"], name: "index_children_on_appointment_id", using: :btree
@@ -135,11 +137,11 @@ ActiveRecord::Schema.define(version: 20160202150212) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
-    t.string   "mobile"
     t.integer  "level"
     t.string   "city"
     t.string   "community"
     t.integer  "amount"
+    t.string   "mobile"
     t.integer  "sex"
     t.datetime "birthday"
   end
