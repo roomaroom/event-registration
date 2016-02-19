@@ -30,7 +30,7 @@ set :rails_env, "production"
 #set :deploy_via, :copy
 set :deploy_via, :remote_cache
 #set :log_level, :info
-set :linked_files, %w(config/database.yml)
+set :linked_files, %w(config/database.yml config/secrets.yml)
 # Default value for :scm is :git
 # set :scm, :git
 set :unicorn_config_path, "/home/school/production/school/shared/config/unicorn.rb"

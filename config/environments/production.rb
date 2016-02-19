@@ -74,9 +74,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: 587,
-    domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
-    enable_starttls_auto: true,
+    domain: 'www.schoolmary.lviv.ua',
+    authentication: :plain,
     user_name: Rails.application.secrets.email_provider_username,
     password: Rails.application.secrets.email_provider_password
   }
