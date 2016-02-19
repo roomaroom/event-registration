@@ -17,7 +17,7 @@
   %tbody
     - @appointments.each do |appointment|
       %tr
-        = simple_form_for(appointment) do |f|
+        = simple_nested_form_for(appointment, :html => { multipart: true, :role => 'form', class: 'form-horizontal'}) do |f|
           = f.error_notification
           / %td
 
@@ -47,6 +47,25 @@
               /= f.button :submit
               = f.submit 'Зберегти', class: 'btn btn-primary save'
 
+          / = f.fields_for :children do |child|
+          /   %tr
+          /     %td Дитина
+          /     %td.active= child.object.name
+          /     %td.warning= child.object.age
+          /     %td
+          /     %td
+          /     %td.info
+          /       = child.object.payment
+          /     %td.active
+          /       .form-inputs
+          /         = child.input :paid, label: false
+          /     %td.warning
+          /     %td.active
+          /       = child.hidden_field :_destroy
+          /       = child.link_to_remove do
+          /         %i.fa.fa-trash
+          /           Видалити
+          /= f.link_to_add "Зареєструвати дитину", :children
         /   %td= link_to 'Show', appointment
         /   %td= link_to 'Edit', edit_appointment_path(appointment)
         /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207124928) do
+ActiveRecord::Schema.define(version: 20160208105957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,11 +137,11 @@ ActiveRecord::Schema.define(version: 20160207124928) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "mobile"
     t.integer  "level"
     t.string   "city"
     t.string   "community"
     t.integer  "amount"
-    t.string   "mobile"
     t.integer  "sex"
     t.datetime "birthday"
   end

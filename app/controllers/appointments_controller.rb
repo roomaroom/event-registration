@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
       current_user.increment!(:amount, @appointment.paid) if current_user.present?
       redirect_to appointments_path, notice: "Оновлено"
     else
-      redirect_to :back
+      redirect_to :back, alert: "Не вдалося зберегти, перевірте чи всі поля заповнені"
     end
   end
 
@@ -68,7 +68,7 @@ class AppointmentsController < ApplicationController
 
     def appointment_params
       appointment_params = params[:appointment]
-      appointment_params ? appointment_params.permit(:user_id, :event_id, :notice, :payment, :paid, :level, children_attributes: [:id, :name, :age, :payment, :_destroy]) : {}
+      appointment_params ? appointment_params.permit(:user_id, :event_id, :notice, :payment, :paid, :level, children_attributes: [:id, :name, :age, :payment, :paid, :_destroy]) : {}
       #params.require(:appointment).permit(:user_id, :event_id, :notice, :payment, :paid)
     end
 

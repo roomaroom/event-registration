@@ -4,7 +4,7 @@
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
     .well
       = f.input :mobile, :autofocus => true, :placeholder => "Наприклад 0981234567", class: 'form-control'
-      = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: "Стать"
+      = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: "Ім'я та Прізвище"
       = f.input :sex,  collection: [['чоловіча', :male ], ['жіноча', :female]], class: 'form-control', label: "Стать"
       = f.input :birthday,  as: :string,  input_html: { data: { provide: 'datepicker' }, class: 'datepicker', value: ( f.object.birthday.strftime('%m/%d/%Y') if f.object.birthday.present?) } , class: 'form-control', label: "Дата Народження"
       = f.input :email, :placeholder => "Email", class: 'form-control'

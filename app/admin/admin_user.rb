@@ -27,7 +27,7 @@ ActiveAdmin.register AdminUser do
 
   controller do
     def update
-      params[:user].delete_if {|key, value| value.blank? }
+      params[:admin_user].delete_if {|key, value| value.blank? }
       super
     end
   end
