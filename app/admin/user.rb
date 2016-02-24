@@ -9,6 +9,7 @@ ActiveAdmin.register User do
     column :role
     column :mobile
     column :sex
+    column :city
     column :birthday
     column :current_sign_in_at
     column :sign_in_count

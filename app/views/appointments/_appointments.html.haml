@@ -1,71 +1,87 @@
-%table.table
-  %thead
-    %tr
-      %th Ім'я
-      %th Телефон
-      %th Вік
-      %th Ступінь
-      %th Нотатка
-      %th Заплановано Оплатити
-      %th Оплачено
-      %th Title
-      %th Зберегти
-      %th
-      %th
-      %th
+.row
+  .row
+    .col-xs-1
+      %h5
+        %b Ім'я
+    .col-xs-1
+      %h5
+        %b Телефон
+    .col-xs-1
+      %h5
+        %b Вік
+    .col-xs-1
+      %h5
+        %b Ступінь
+    .col-xs-2
+      %h5
+        %b Нотатка
+    .col-xs-2
+      %h5
+        %b Заплановано Оплатити
+    .col-xs-1
+      %h5
+        %b Оплачено
+    .col-xs-2
+      %h5
+        %b Title
+    .col-xs-1
+      %h5
+        %b Зберегти
+  /%hr
 
-  %tbody
-    - @appointments.each do |appointment|
-      %tr
-        = simple_nested_form_for(appointment, :html => { multipart: true, :role => 'form', class: 'form-horizontal'}) do |f|
+.row
+  - @appointments.each do |appointment|
+    .div-striped
+      = simple_nested_form_for(appointment , :html => { multipart: true, :role => 'form', class: ''} ) do |f|
+        .row
           = f.error_notification
-          / %td
-
-          /   .form-inputs
-          /     = f.input :notice
-          /   .form-actions
-          /     = f.button :submit
-          %td.active= appointment.user.name
-          %td.warning= appointment.user.mobile
-          %td.active
+          .col-xs-1.text-center= appointment.user.name
+          .col-xs-1.text-center= appointment.user.mobile
+          .col-xs-1.text-center
             = (Time.now.to_s(:number).to_i - appointment.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if appointment.user.birthday.present?
             //= DateTime.now - appointment.user.birthday if appointment.user.birthday.present?
-          %td.info
+          .col-xs-1
             .form-inputs
               = f.input :level, label: false
-          %td.success
+          .col-xs-2.success
             .form-inputs
               = f.input :notice, label: false
-          %td.info
+          .col-xs-2.info
             = f.object.payment
-          %td.active
+          .col-xs-1.active
             .form-inputs
               = f.input :paid, label: false
-          %td.warning= appointment.event.title
-          %td.active
+          .col-xs-2.warning= appointment.event.title
+          .col-xs-1.active
             .form-actions
               /= f.button :submit
               = f.submit 'Зберегти', class: 'btn btn-primary save'
+        %hr
+        = f.fields_for :children do |child|
+          .row
+            .col-xs-1 Дитина
+            .col-xs-1
+              = child.object.name
+            .col-xs-1
+              = child.object.age
+            .col-xs-1
+            .col-xs-2
+            .col-xs-2
+              = child.object.payment
+            .col-xs-1
+              .form-inputs
+                = child.input :paid, label: false
+            .col-xs-2
+            .col-xs-1
+              = child.hidden_field :_destroy
+              = child.link_to_remove do
+                %i.fa.fa-trash
+                  Видалити
+          / .row
+          /   .col-xs-3
+          %hr
+        = f.link_to_add "Зареєструвати дитину", :children
+      /   %td= link_to 'Show', appointment
+      /   %td= link_to 'Edit', edit_appointment_path(appointment)
+      /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-          / = f.fields_for :children do |child|
-          /   %tr
-          /     %td Дитина
-          /     %td.active= child.object.name
-          /     %td.warning= child.object.age
-          /     %td
-          /     %td
-          /     %td.info
-          /       = child.object.payment
-          /     %td.active
-          /       .form-inputs
-          /         = child.input :paid, label: false
-          /     %td.warning
-          /     %td.active
-          /       = child.hidden_field :_destroy
-          /       = child.link_to_remove do
-          /         %i.fa.fa-trash
-          /           Видалити
-          /= f.link_to_add "Зареєструвати дитину", :children
-        /   %td= link_to 'Show', appointment
-        /   %td= link_to 'Edit', edit_appointment_path(appointment)
-        /   %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }

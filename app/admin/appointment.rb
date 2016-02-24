@@ -18,7 +18,7 @@ ActiveAdmin.register Appointment do
     column "Стать" do |c|
       c.user.sex
     end
-    column "ДН" do |c|
+    column "Вік" do |c|
       (Time.now.to_s(:number).to_i - c.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if c.user.birthday.present?
     end
     column 'Нотатки', :notice

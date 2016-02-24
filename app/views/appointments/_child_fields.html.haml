@@ -1,0 +1,20 @@
+.nested-fields
+  %td Дитина
+  %td.active
+    = f.object.name
+  %td.warning
+    = f.object.age
+  %td
+  %td
+  %td.info
+    = f.object.payment
+  %td.active
+    .form-inputs
+      = f.input :paid, label: false
+  %td.warning
+  %td.active
+    = f.hidden_field :_destroy
+    = link_to_remove_association "Видалити", f
+    / = child.link_to_remove do
+    /   %i.fa.fa-trash
+    /     Видалити

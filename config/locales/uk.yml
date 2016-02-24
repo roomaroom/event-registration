@@ -39,6 +39,9 @@ uk:
         mobile: "Телефон"
         created_at: "Створено"
         city: "Місто"
+        sex: "Стать"
+        role: "Роль"
+        birthday: "День Народження"
         password: 'Пароль'
         password_confirmation: 'Повторити Пароль'
       admin_user:
