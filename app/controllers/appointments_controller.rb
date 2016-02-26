@@ -23,9 +23,11 @@ class AppointmentsController < ApplicationController
 
   def update
     load_appointment
+    paid_before_save = @appointment.paid + @appointment.children.pluck(:paid).reduce(:+)
     build_appointment
     if @appointment.save
-      current_user.increment!(:amount, @appointment.paid) if current_user.present?
+      paid_after_save = @appointment.paid + @appointment.children.pluck(:paid).reduce(:+)
+      current_user.increment!(:amount, paid_after_save - paid_before_save)
       redirect_to appointments_path, notice: "Оновлено"
     else
       redirect_to :back, alert: "Не вдалося зберегти, перевірте чи всі поля заповнені"
@@ -40,7 +42,8 @@ class AppointmentsController < ApplicationController
 
   def search
     if params[:term].present?
-      @users = User.where("name LIKE ? OR CAST(mobile AS TEXT)  LIKE ?", "%#{params[:term]}%", "%#{params[:term]}%")
+      @users = User.where("LOWER(name) LIKE ? OR CAST(mobile AS TEXT)  LIKE ?", "%#{params[:term].mb_chars.downcase.to_s}%", "%#{params[:term]}%")
+      #binding.pry
       @appointments = Appointment.where(user: @users)
       #@appointments = Appointment.search(params[:term]).records.page(params[:page]).per(20)
       #@appointments = @appointments.where(event_id: params[:event_id])

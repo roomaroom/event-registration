@@ -60,11 +60,11 @@
         = f.fields_for :children do |child|
           .row
             .col-xs-1 Дитина
+            .col-xs-2
+              = child.input :name, label: false
             .col-xs-1
-              = child.object.name
-            .col-xs-1
-              = child.object.age
-            .col-xs-1
+              = child.input :age, label: false
+            /.col-xs-1
             .col-xs-2
             .col-xs-2
               = child.object.payment
@@ -75,8 +75,7 @@
             .col-xs-1
               = child.hidden_field :_destroy
               = child.link_to_remove do
-                %i.fa.fa-trash
-                  Видалити
+                %i.fa.fa-trash.pull-right
           / .row
           /   .col-xs-3
           %hr

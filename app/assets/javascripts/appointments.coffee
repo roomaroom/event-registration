@@ -8,7 +8,7 @@ $ ->
 
 
   $('#term').autocomplete
-    source: '/appointments/search'
-    minChars: 3,
+    source: '/appointments/search',
+    minLength: 3,
     select:  ( event, ui ) ->
       $('.form-search').submit()
