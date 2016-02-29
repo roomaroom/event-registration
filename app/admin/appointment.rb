@@ -1,24 +1,26 @@
 ActiveAdmin.register Appointment do
   menu label: "Записи"
 
+
   permit_params :notice, :payment, :paid, :level, :done
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+
+  controller do
+    def scoped_collection
+      Appointment.includes(:user)
+    end
+  end
 
   index do
-    column "Ім'я" do |c|
+    column "Ім'я", sortable: 'users.name' do |c|
       c.user.name
     end
-    column "Телефон" do |c|
+    column "Телефон", sortable: 'users.mobile' do |c|
       c.user.mobile
     end
-    column "Стать" do |c|
+    column "Стать", sortable: 'users.sex' do |c|
       c.user.sex
     end
-    column "Вік" do |c|
+    column "Вік", sortable: 'users.birthday' do |c|
       (Time.now.to_s(:number).to_i - c.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if c.user.birthday.present?
     end
     column 'Нотатки', :notice
