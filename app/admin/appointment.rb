@@ -2,12 +2,25 @@ ActiveAdmin.register Appointment do
   menu label: "Записи"
 
 
-  permit_params :notice, :payment, :paid, :level, :done
+  permit_params :notice, :payment, :paid, :level, :done, :mobile, :name, :sex
 
   controller do
     def scoped_collection
       Appointment.includes(:user)
     end
+  end
+
+  csv do
+    column("Ім'я") { |user| user.user.name }
+    column("Телефон") { |user| user.user.mobile }
+    column("Стать") { |user| user.user.sex }
+    column("Вік") do |user|
+      (Time.now.to_s(:number).to_i - user.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if user.user.birthday.present?
+    end
+    column(:notice)
+    column(:payment)
+    column(:paid)
+    column(:level)
   end
 
   index do
