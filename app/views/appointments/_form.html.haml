@@ -6,7 +6,7 @@
     .hidden= f.association :event, selected: "#{params[:event_id]}"
     = f.input :notice, label: 'Примітки', class: 'form-control'
     /= f.input :level, label: 'Ступінь', required: true, class: 'form-control'
-    = f.input :level , as: :select, collection: Appointment.degrees.keys , label: 'Ступінь', include_blank: false
+    = f.input :level , as: :select, collection: Appointment.levels.keys , label: 'Ступінь', include_blank: false
     = f.input :payment , as: :select, collection: Appointment.payments.keys , label: 'Форма оплати', include_blank: false
     = f.fields_for :children do |child|
       %h3 Інформація про дитину

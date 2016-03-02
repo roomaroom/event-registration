@@ -40,10 +40,10 @@
           .col-xs-1.text-center
             = (Time.now.to_s(:number).to_i - appointment.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if appointment.user.birthday.present?
             //= DateTime.now - appointment.user.birthday if appointment.user.birthday.present?
-          .col-xs-1
+          .col-xs-2
             .form-inputs
-              = f.input :level, label: false
-          .col-xs-2.success
+              = f.input :level , as: :select, collection: Appointment.levels.keys , label: false
+          .col-xs-1.success
             .form-inputs
               = f.input :notice, label: false
           .col-xs-2.info
