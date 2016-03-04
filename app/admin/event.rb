@@ -1,14 +1,14 @@
 ActiveAdmin.register Event do
   menu label: "Події"
 
-  permit_params :title, :start_time, :end_time, :description, :address, :photo
+  permit_params :title, :start_time, :end_time, :description, :address, :photo, :active
 
   index do
     column 'Заголовок', :title
     column 'Початок', :start_time
     column 'Закінчення', :end_time
     column 'Адрес', :address
-    column 'Фото', :photo
+    column 'Активна', :active
     actions
   end
 
@@ -19,6 +19,7 @@ ActiveAdmin.register Event do
       f.input :start_time, label: 'Початок'
       f.input :end_time, label: 'Закінчення'
       f.input :address, label: 'Адрес'
+      f.input :active, label: 'Активна'
       f.input :photo, label: 'Фото'
     end
     f.actions
@@ -40,6 +41,9 @@ ActiveAdmin.register Event do
       end
       row 'Адрес' do |c|
         c.address
+      end
+      row 'Активна' do |c|
+        c.active
       end
       row 'Фото' do |c|
         c.photo
