@@ -1,0 +1,37 @@
+- unless @event.active?
+  - if user_signed_in?
+    %h3
+      = link_to "Новий Відгук", '#', id: :new_root_comment
+
+    = form_for Comment.new, remote: true, authenticity_token: true do |f|
+      .error_notifier{ style: "display:none" }
+      / %label= t('the_comments.form.title')
+      / %p= f.text_field :title
+
+      / %label= t('the_comments.form.contacts')
+      / %p= f.text_field :contacts
+
+      %label Текст
+      %p= f.text_area :raw_content
+
+      %p.trap
+        - TheComments.config.empty_inputs.each do |name|
+          = text_field_tag name, nil, autocomplete: :off, tabindex: -1, id: nil
+
+      = hidden_field_tag :tolerance_time, 0, id: nil, class: :tolerance_time
+
+      = f.hidden_field :commentable_type, value: commentable.class
+      = f.hidden_field :commentable_id,   value: commentable.id
+      = f.hidden_field :parent_id, class: :parent_id
+
+      %p
+        = f.submit 'Надіслати', class: 'btn btn-primary'
+        Дякуємо!
+  - else
+    .alert.alert-warning
+      %strong Увага!
+      Вам необхідно
+      = link_to 'увійти в систему', new_user_session_path
+      чи
+      = link_to 'зареєструватися', new_user_registration_path
+      щоб залишити відгук

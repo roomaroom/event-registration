@@ -14,6 +14,10 @@ gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-ra
 gem 'lightbox2-rails'
 gem "font-awesome-rails"
 
+gem "the_comments", "~> 2.2.2"
+gem 'haml'
+gem 'awesome_nested_set'
+
 group :development, :test do
   gem 'byebug'
 end

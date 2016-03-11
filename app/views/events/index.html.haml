@@ -20,7 +20,7 @@
             = link_to  event.photo.url, "data-lightbox" => "roadtrip" do
               = image_tag((event.photo.present? ? event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
             .info
-              %h2.title= event.title
+              %h2.title= link_to(event.title, event)
               .desc
                 = raw event.description
               %p.address
@@ -39,8 +39,9 @@
                       = link_to 'Зареєструватися', new_appointment_path( :event_id => event.id), class: 'btn btn-defaul'
                 - else
                   %li.register{:style => "width:50%;"}
-                    %a.btn.btn-defaul
-                      Реєстрація завершенна
+                    = link_to 'Залишити відгук', event_path(event, :anchor => 'new_comment'), class: 'btn btn-defaul'
+                    / %a.btn.btn-defaul{href: "#{}"}
+                    /   Залишити відгук
             /%button.btn.-btn-ghost.btn-sm.-main-color.-width-100per{"data-target" => ".#{event.id}.map-search", "data-toggle" => "modal", :type => "button" }  Map
             = render partial: "events/modal_map", locals: { event: event}
             / .social

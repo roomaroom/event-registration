@@ -1,5 +1,14 @@
-class EventsController < InheritedResources::Base
+class EventsController < ApplicationController
   helper_method :build_markers
+
+  def index
+    @events = Event.all
+  end
+
+  def show
+    @event    = Event.find params[:id]
+    @comments = @event.comments.with_state([:draft, :published])
+  end
 
   private
 

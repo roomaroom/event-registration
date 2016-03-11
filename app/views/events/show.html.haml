@@ -1,24 +1,54 @@
-%p#notice= notice
-
-%p
-  %b Title:
-  = @event.title
-%p
-  %b Start time:
-  = @event.start_time
-%p
-  %b End time:
-  = @event.end_time
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Address:
-  = @event.address
-%p
-  %b Photo:
-  = @event.photo
-
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+.container
+  /%br
+  /%h1 Список майбутніх шкіл
+  %br
+  .row
+    .col-xs-12.col-sm-12
+      %ul.event-list
+        /- @events.each do |event|
+        %li
+          %time{:datetime => "2014-07-20"}
+            .start-date Початок
+            /%span.day 4
+            %span.month= l(@event.start_time, format: '%k:%M %e %b')
+            / %span.year 2014
+            / %span.time ALL DAY
+            %span.day -
+            .start-date Закінчення
+            /%span.day 4
+            %span.month= l(@event.end_time, format: '%k:%M %e %b')
+          = link_to  @event.photo.url, "data-lightbox" => "roadtrip" do
+            = image_tag((@event.photo.present? ? @event.photo.url : "https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"), "data-lightbox" => "roadtrip")
+          .info
+            %h2.title= link_to(@event.title, @event)
+            .desc
+              = raw @event.description
+            %p.address
+              = fa_icon "map-marker"
+              = @event.address
+            %ul
+              - if @event.latitude.present?
+                %li.map{:style => "width:50%;"}
+                  = link_to 'Карта', '#', "data-target" => ".#{@event.id}.map-search", "data-toggle" => "modal"
+              - if @event.active?
+                - if current_user.present? && current_user.events.include?(@event)
+                  %li.remove{:style => "width:50%;"}
+                    = link_to 'Скасувати Реєстрацію', current_user.appointments.where(event_id: @event.id).first, :method => :delete, :data => { :confirm => 'Ви впевнені?' }, class: 'btn btn-defaul'
+                - else
+                  %li.register{:style => "width:50%;"}
+                    = link_to 'Зареєструватися', new_appointment_path( :event_id => @event.id), class: 'btn btn-defaul'
+              - else
+                %li.register{:style => "width:50%;"}
+                  %a.btn.btn-defaul
+                    Реєстрація завершенна
+          /%button.btn.-btn-ghost.btn-sm.-main-color.-width-100per{"data-target" => ".#{@event.id}.map-search", "data-toggle" => "modal", :type => "button" }  Map
+          = render partial: "events/modal_map", locals: { event: @event}
+          / .social
+          /   %ul
+          /     %li.facebook{:style => "width:33%;"}
+          /       %a{:href => "#facebook"}
+          /         %span.fa.fa-gears
+  .row
+    .col-xs-12.col-sm-12
+      %h3= 'Відгуки' if @comments.any?
+      = render partial: 'the_comments/tree', locals: { commentable: @event, comments_tree: @comments }

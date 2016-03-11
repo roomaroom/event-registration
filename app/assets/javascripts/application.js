@@ -21,6 +21,7 @@
 //= require jquery.geocomplete.min
 //= require lightbox
 //= require underscore
+//= require the_comments
 //= require_tree .
 
 $(document).ready(function() {

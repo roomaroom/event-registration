@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  include TheComments::User
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, :authentication_keys => { login: true, email: false}
@@ -46,4 +48,19 @@ class User < ActiveRecord::Base
   # def email_changed?
   #   false
   # end
+
+
+  # IT'S JUST AN EXAMPLE OF ANY ROLE SYSTEM
+  def admin?
+    servant?
+  end
+
+  # YOU HAVE TO IMPLEMENT YOUR ROLE POLICY FOR COMMENTS HERE
+  def comments_admin?
+    servant?
+  end
+
+  def comments_moderator? comment
+    id == comment.holder_id
+  end
 end

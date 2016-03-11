@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304120851) do
+ActiveRecord::Schema.define(version: 20160311100550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,34 @@ ActiveRecord::Schema.define(version: 20160304120851) do
 
   add_index "children", ["appointment_id"], name: "index_children_on_appointment_id", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "holder_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "commentable_url"
+    t.string   "commentable_title"
+    t.string   "commentable_state"
+    t.string   "anchor"
+    t.string   "title"
+    t.string   "contacts"
+    t.text     "raw_content"
+    t.text     "content"
+    t.string   "view_token"
+    t.string   "state",             default: "draft"
+    t.string   "ip",                default: "undefined"
+    t.string   "referer",           default: "undefined"
+    t.string   "user_agent",        default: "undefined"
+    t.integer  "tolerance_time"
+    t.boolean  "spam",              default: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth",             default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: :cascade do |t|
     t.text     "title"
     t.datetime "start_time"
@@ -97,11 +125,14 @@ ActiveRecord::Schema.define(version: 20160304120851) do
     t.text     "description"
     t.string   "address"
     t.string   "photo"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "active",      default: true
+    t.boolean  "active",                   default: true
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   create_table "static_pages", force: :cascade do |t|
@@ -112,18 +143,18 @@ ActiveRecord::Schema.define(version: 20160304120851) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                       default: "", null: false
+    t.string   "encrypted_password",          default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",               default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
@@ -137,7 +168,7 @@ ActiveRecord::Schema.define(version: 20160304120851) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
+    t.integer  "invitations_count",           default: 0
     t.string   "mobile"
     t.integer  "level"
     t.string   "city"
@@ -145,6 +176,13 @@ ActiveRecord::Schema.define(version: 20160304120851) do
     t.integer  "amount"
     t.integer  "sex"
     t.datetime "birthday"
+    t.integer  "my_draft_comments_count",     default: 0
+    t.integer  "my_published_comments_count", default: 0
+    t.integer  "my_comments_count",           default: 0
+    t.integer  "draft_comcoms_count",         default: 0
+    t.integer  "published_comcoms_count",     default: 0
+    t.integer  "deleted_comcoms_count",       default: 0
+    t.integer  "spam_comcoms_count",          default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

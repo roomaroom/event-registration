@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include TheComments::Commentable
+
   default_scope  { order('created_at DESC') }
 
   has_many :appointments, dependent: :destroy
