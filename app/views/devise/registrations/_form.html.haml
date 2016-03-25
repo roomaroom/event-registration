@@ -54,14 +54,14 @@
           #signupalert.alert.alert-danger{:style => "display:none"}
             %p Error:
             %span
-          = f.input :mobile, :autofocus => true, :placeholder => "Наприклад 0981234567", class: 'form-control'
-          = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control'
+          = f.input :mobile, :autofocus => true, :placeholder => "Наприклад 0981234567", class: 'form-control', label: "Телефон"
+          = f.input :name, :placeholder => "Ім'я та Прізвище", class: 'form-control', label: "Ім'я та Прізвище"
           = f.input :sex,  collection: [['чоловіча', :male ], ['жіноча', :female]], class: 'form-control', label: "Стать"
           = f.input :birthday,  as: :string, :placeholder => "У форматі 31/12/1989 ",  input_html: { data: { provide: 'datepicker' }, class: 'datepicker', value: ( f.object.birthday.strftime('%m/%d/%Y') if f.object.birthday.present?) } , class: 'form-control', label: "Дата Народження"
-          = f.input :email, :placeholder => "Email", class: 'form-control'
-          = f.input :city, :placeholder => "Місто", class: 'form-control'
-          = f.input :password, class: 'form-control', :placeholder => "Введіть пароль", :required => true, :type => "password"
-          = f.input :password_confirmation, class: 'form-control', :placeholder => "Повторіть пароль", :required => true, :type => "password"
+          = f.input :email, :placeholder => "Email", class: 'form-control', label: "Email"
+          = f.input :city, :placeholder => "Місто", class: 'form-control', label: "Місто"
+          = f.input :password, class: 'form-control', :placeholder => "Введіть пароль", :required => true, :type => "password", label: 'Пароль'
+          = f.input :password_confirmation, class: 'form-control', :placeholder => "Повторіть пароль", :required => true, :type => "password", label: 'Повторити Пароль'
           .form-group
             / Button
             .col-md-offset-3.col-md-9
