@@ -6,6 +6,8 @@ ActiveAdmin.register User do
     selectable_column
     column :email
     column :name
+    column :first_name
+    column :last_name
     column :role
     column :mobile
     column :sex

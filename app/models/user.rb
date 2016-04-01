@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :events, through: :appointments
 
-  validates_presence_of :name, :mobile, :city, :email, :sex, :birthday
+  validates_presence_of :first_name, :last_name, :mobile, :city, :email, :sex, :birthday
   validates :mobile, format: { with: /\+?\d{1,4}?[-\s]?\(?\d{1,3}?\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}/,
             message: 'Неправильний формат телефону' }
 
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     else
       where(conditions.to_hash).first
     end
+  end
+
+  def full_name
+    "#{last_name} #{first_name}"
   end
 
   def set_default_role
@@ -50,12 +54,10 @@ class User < ActiveRecord::Base
   # end
 
 
-  # IT'S JUST AN EXAMPLE OF ANY ROLE SYSTEM
   def admin?
     servant?
   end
 
-  # YOU HAVE TO IMPLEMENT YOUR ROLE POLICY FOR COMMENTS HERE
   def comments_admin?
     servant?
   end

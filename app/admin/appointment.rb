@@ -2,7 +2,7 @@ ActiveAdmin.register Appointment do
   menu label: "Записи"
 
 
-  permit_params :notice, :payment, :paid, :level, :done, :mobile, :name, :sex
+  permit_params :notice, :payment, :paid, :level, :done, :mobile, :first_name, :last_name, :sex
 
   controller do
     def scoped_collection
@@ -11,7 +11,9 @@ ActiveAdmin.register Appointment do
   end
 
   csv do
-    column("Ім'я") { |user| user.user.name }
+    #column("Ім'я") { |user| user.user.name }
+    column("Ім'я") { |user| user.user.last_name }
+    column("Ім'я") { |user| user.user.first_name }
     column("Телефон") { |user| user.user.mobile }
     column("Стать") { |user| user.user.sex }
     column("Вік") do |user|
@@ -25,7 +27,10 @@ ActiveAdmin.register Appointment do
 
   index do
     column "Ім'я", sortable: 'users.name' do |c|
-      c.user.name
+      c.user.first_name
+    end
+    column "Прізвище", sortable: 'users.name' do |c|
+      c.user.last_name
     end
     column "Телефон", sortable: 'users.mobile' do |c|
       c.user.mobile
@@ -63,8 +68,11 @@ ActiveAdmin.register Appointment do
 
   show do |appointment|
     attributes_table do
+      row "Прізвище" do |c|
+        c.user.last_name
+      end
       row "Ім'я" do |c|
-        c.user.name
+        c.user.first_name
       end
       row "Телефон" do |c|
         c.user.mobile

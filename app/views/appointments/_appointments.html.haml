@@ -35,7 +35,7 @@
       = simple_nested_form_for(appointment , :html => { multipart: true, :role => 'form', class: ''} ) do |f|
         .row
           = f.error_notification
-          .col-xs-1.text-center= appointment.user.name
+          .col-xs-1.text-center= appointment.user.full_name
           .col-xs-1.text-center= appointment.user.mobile
           .col-xs-1.text-center
             = (Time.now.to_s(:number).to_i - appointment.user.birthday.to_time.to_s(:number).to_i)/10e9.to_i if appointment.user.birthday.present?

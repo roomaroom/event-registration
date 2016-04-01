@@ -42,7 +42,7 @@ class AppointmentsController < ApplicationController
 
   def search
     if params[:term].present?
-      @users = User.where("LOWER(name) LIKE ? OR CAST(mobile AS TEXT)  LIKE ?", "%#{params[:term].mb_chars.downcase.to_s}%", "%#{params[:term]}%")
+      @users = User.where("LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR CAST(mobile AS TEXT)  LIKE ?", "%#{params[:term].mb_chars.downcase.to_s}%", "%#{params[:term]}%", "%#{params[:term]}%")
       #binding.pry
       @appointments = Appointment.where(user: @users)
       #@appointments = Appointment.search(params[:term]).records.page(params[:page]).per(20)
