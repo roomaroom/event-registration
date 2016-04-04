@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu label: "Користувачі"
-  permit_params :email, :password, :password_confirmation, :role
+  permit_params :email, :password, :password_confirmation, :role, :first_name, :last_name
 
   index do
     selectable_column
@@ -21,7 +21,8 @@ ActiveAdmin.register User do
   show do |user|
     attributes_table do
       row :email
-      row :name
+      row :first_name
+      row :last_name
       row :city
       row :community
       row :role
@@ -39,6 +40,8 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Admin Details" do
       f.input :email
+      f.input :first_name
+      f.input :last_name
       f.input :role, as: :select,
             collection: User.roles.keys,
             include_blank: false

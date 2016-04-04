@@ -11,8 +11,7 @@ ActiveAdmin.register Appointment do
   end
 
   csv do
-    #column("Ім'я") { |user| user.user.name }
-    column("Ім'я") { |user| user.user.last_name }
+    column("Прізвище") { |user| user.user.last_name }
     column("Ім'я") { |user| user.user.first_name }
     column("Телефон") { |user| user.user.mobile }
     column("Стать") { |user| user.user.sex }
